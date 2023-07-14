@@ -1,0 +1,614 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "URL Shortener",
+        "description": "URL Shortener Server",
+        "version": "v1.0.0"
+    },
+    "host": "localhost:5000",
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/api",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "api_Key": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "Token Authorization"
+        }
+    },
+    "security": [
+        {
+            "api_Key": []
+        }
+    ],
+    "paths": {
+        "/shortener/": {
+            "get": {
+                "operationId": "shortener_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The initial index from which to return the results.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Shortener"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "shortener"
+                ]
+            },
+            "post": {
+                "operationId": "shortener_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Shortener"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Shortener"
+                        }
+                    }
+                },
+                "tags": [
+                    "shortener"
+                ]
+            },
+            "parameters": []
+        },
+        "/shortener/redirect/{short_url}": {
+            "get": {
+                "operationId": "shortener_redirect_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Shortener"
+                        }
+                    }
+                },
+                "tags": [
+                    "shortener"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "short_url",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/shortener/{id}": {
+            "get": {
+                "operationId": "shortener_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Shortener"
+                        }
+                    }
+                },
+                "tags": [
+                    "shortener"
+                ]
+            },
+            "put": {
+                "operationId": "shortener_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Shortener"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Shortener"
+                        }
+                    }
+                },
+                "tags": [
+                    "shortener"
+                ]
+            },
+            "patch": {
+                "operationId": "shortener_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Shortener"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Shortener"
+                        }
+                    }
+                },
+                "tags": [
+                    "shortener"
+                ]
+            },
+            "delete": {
+                "operationId": "shortener_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "shortener"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this shortener.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/user/": {
+            "get": {
+                "operationId": "user_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The initial index from which to return the results.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "user"
+                ]
+            },
+            "parameters": []
+        },
+        "/user/login/": {
+            "post": {
+                "operationId": "user_login_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AuthToken"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/AuthToken"
+                        }
+                    }
+                },
+                "tags": [
+                    "user"
+                ]
+            },
+            "parameters": []
+        },
+        "/user/register/": {
+            "post": {
+                "operationId": "user_register_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                },
+                "tags": [
+                    "user"
+                ]
+            },
+            "parameters": []
+        },
+        "/user/{id}/": {
+            "get": {
+                "operationId": "user_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                },
+                "tags": [
+                    "user"
+                ]
+            },
+            "put": {
+                "operationId": "user_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                },
+                "tags": [
+                    "user"
+                ]
+            },
+            "patch": {
+                "operationId": "user_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                },
+                "tags": [
+                    "user"
+                ]
+            },
+            "delete": {
+                "operationId": "user_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "user"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this user.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        }
+    },
+    "definitions": {
+        "Shortener": {
+            "required": [
+                "long_url"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "author": {
+                    "title": "Author",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "short_url": {
+                    "title": "Short url",
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 200,
+                    "x-nullable": true
+                },
+                "long_url": {
+                    "title": "Long url",
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 200,
+                    "minLength": 1
+                },
+                "click_count": {
+                    "title": "Click count",
+                    "type": "integer",
+                    "maximum": 2147483647,
+                    "minimum": 0
+                },
+                "created_at": {
+                    "title": "Created at",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "updated_at": {
+                    "title": "Updated at",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                }
+            }
+        },
+        "User": {
+            "required": [
+                "password",
+                "email",
+                "username",
+                "first_name",
+                "last_name"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "password": {
+                    "title": "Password",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "last_login": {
+                    "title": "Last login",
+                    "type": "string",
+                    "format": "date-time",
+                    "x-nullable": true
+                },
+                "email": {
+                    "title": "Email",
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254,
+                    "minLength": 1
+                },
+                "username": {
+                    "title": "Username",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "first_name": {
+                    "title": "First name",
+                    "type": "string",
+                    "maxLength": 45,
+                    "minLength": 1
+                },
+                "last_name": {
+                    "title": "Last name",
+                    "type": "string",
+                    "maxLength": 45,
+                    "minLength": 1
+                },
+                "is_superuser": {
+                    "title": "Is superuser",
+                    "type": "boolean"
+                },
+                "is_staff": {
+                    "title": "Is staff",
+                    "type": "boolean"
+                },
+                "is_active": {
+                    "title": "Is active",
+                    "type": "boolean"
+                },
+                "bio": {
+                    "title": "Bio",
+                    "type": "string"
+                },
+                "created_at": {
+                    "title": "Created at",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "updated_at": {
+                    "title": "Updated at",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "groups": {
+                    "description": "The groups this user belongs to. A user will get all permissions granted to each of their groups.",
+                    "type": "array",
+                    "items": {
+                        "description": "The groups this user belongs to. A user will get all permissions granted to each of their groups.",
+                        "type": "integer"
+                    },
+                    "uniqueItems": true
+                },
+                "user_permissions": {
+                    "description": "Specific permissions for this user.",
+                    "type": "array",
+                    "items": {
+                        "description": "Specific permissions for this user.",
+                        "type": "integer"
+                    },
+                    "uniqueItems": true
+                }
+            }
+        },
+        "AuthToken": {
+            "required": [
+                "username",
+                "password"
+            ],
+            "type": "object",
+            "properties": {
+                "username": {
+                    "title": "Username",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "password": {
+                    "title": "Password",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "token": {
+                    "title": "Token",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                }
+            }
+        }
+    }
+}
