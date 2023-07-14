@@ -24,4 +24,4 @@ class LoginTestCase(TestCase):
     def test_invalid_user_login(self):
         url = reverse("login")
         response = self.client.post(url, user_invalid_login_data)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)

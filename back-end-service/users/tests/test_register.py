@@ -3,8 +3,8 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIClient
 
-from user.tests.mock_data import user_register_data
-from user.models import User
+from users.tests.mock_data import user_register_data
+from users.models import User
 
 
 class RegisterTestCase(TestCase):

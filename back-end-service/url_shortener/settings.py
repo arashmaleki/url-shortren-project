@@ -17,7 +17,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -135,10 +135,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
-    "http://5.34.199.78:5000"
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
