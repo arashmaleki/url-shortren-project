@@ -161,3 +161,7 @@ cython_debug/
 static
 
 .vscode/
+
+.iws
+workspace.xml
+tasks.xml
