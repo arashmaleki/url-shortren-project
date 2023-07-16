@@ -1,7 +1,7 @@
 <template>
     <b-container fluid class="customContainer">
         <site-header />
-        <Nuxt class="siteContainer" />
+        <Nuxt />
     </b-container>
 </template>
 
