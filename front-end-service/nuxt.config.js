@@ -1,6 +1,6 @@
 export default {
   head: {
-    title: 'front-end-service',
+    title: 'URL Shortener',
     htmlAttrs: {
       lang: 'en'
     },
@@ -41,22 +41,20 @@ export default {
 
   buildModules: [],
 
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/auth-next',
-    'cookie-universal-nuxt',
-    'bootstrap-vue/nuxt',
-  ],
-
   axios: {
     baseURL: process.env.API_SERVER_BASE_URL,
+    headers: {
+      'X-CSRFToken': 'csrftoken',
+    },
+    xsrfCookieName: 'csrftoken',
+    xsrfHeaderName: 'X-CSRFToken',
   },
 
   auth: {
     redirect: {
-      login: '/',
+      login: '/home',
       logout: '/login',
-      home: '/'
+      home: '/home'
     },
     cookie: {
       options: {
@@ -67,12 +65,13 @@ export default {
       local: {
         token: {
           property: 'token',
-          type: 'Bearer',
+          type: 'Token',
+          name: 'Authorization',
           maxAge: 12 * 24 * 60,
         },
         endpoints: {
           login: {
-            url: `${process.env.API_SERVER_BASE_URL}/api/users/login`,
+            url: `${process.env.API_SERVER_BASE_URL}/api/user/login/`,
             method: 'post'
           },
           user: false,
@@ -82,6 +81,13 @@ export default {
       }
     }
   },
+
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
+    'cookie-universal-nuxt',
+    'bootstrap-vue/nuxt',
+  ],
 
   build: {},
 
@@ -98,9 +104,9 @@ export default {
 
   bootstrapVue: {
     componentPlugins: [],
-    components: ['BContainer', 'BFormInput', 'BButton', 'BButtonGroup', 'BTable', 'BImgLazy', 'BForm', 'BFormGroup', 'BRow', 'BCol', 'BOverlay',
-      'BFormInput', 'BLink', 'BFormRadioGroup', 'BImg', 'BDropdownForm', 'BDropdownItem', 'BDropdown', 'BFormCheckbox', 'BInputGroup', 'BFormCheckboxGroup',
-      'BFormTextarea', 'BFormRadio', 'BAvatar', 'BPagination', 'BDropdownForm', 'BDropdownItem', 'BDropdown', 'BCard', 'BPaginationNav',
+    components: ['BContainer', 'BFormInput', 'BButton', 'BButtonGroup', 'BTable', 'BImgLazy', 'BForm', 'BFormGroup', 'BRow', 'BCol', 'BOverlay', 'BNavbar', 'BNavbarBrand', 'BNavItem',
+      'BFormInput', 'BLink', 'BFormRadioGroup', 'BImg', 'BDropdownForm', 'BDropdownItem', 'BDropdown', 'BFormCheckbox', 'BInputGroup', 'BFormCheckboxGroup', 'BNavbarToggle',
+      'BFormTextarea', 'BFormRadio', 'BAvatar', 'BPagination', 'BDropdownForm', 'BDropdownItem', 'BDropdown', 'BCard', 'BPaginationNav', 'BNavItemDropdown', 'BNavbarNav', 'BCollapse',
     ],
     directives: []
   },

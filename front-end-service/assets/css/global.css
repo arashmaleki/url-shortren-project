@@ -1,25 +1,49 @@
 html {
-    scroll-behavior: smooth;
-    word-spacing: 1px;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
+  scroll-behavior: smooth;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
-    margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-    font-weight: 300;
-    color: var(--Black);
-    background: var(--White);
-    min-height: 100vh;
-    max-height: 100vh;
+  font-weight: 300;
+  color: var(--Black);
+  background: var(--White);
+  min-height: 100vh;
+  max-height: 100vh;
 }
 
+.customContainer {
+    height: 100vh;
+}
+
+.centerForm {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.errorMessage {
+    color: red;
+    max-width: 300px;
+}
+
+.textAlignCenter {
+    text-align: center;
+}
