@@ -4,12 +4,13 @@ from random import choices
 from django.conf import settings
 from django.db.models import CASCADE
 from users.models import User
+from django.core.validators import URLValidator
 
 
 class Shortener(models.Model):
     author = models.ForeignKey(User, on_delete=CASCADE)
     short_url = models.URLField(blank=True, null=True, unique=True)
-    long_url = models.URLField()
+    long_url = models.TextField(validators=[URLValidator()])
     click_count = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

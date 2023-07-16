@@ -7,11 +7,13 @@ from shortener.serializers import ShortenerSerializer
 from django.conf import settings
 from shortener.permissions import IsOwnerOrReadOnly
 from rest_framework import generics
+from shortener.pagination import CustomPagination
 
 
 class ShortenerCreateApiView(generics.ListCreateAPIView):
     serializer_class = ShortenerSerializer
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+    pagination_class = CustomPagination
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
