@@ -1,6 +1,6 @@
 <template>
     <b-container fluid class="customContainer">
-        <Nuxt class="siteContainer" />
+        <Nuxt />
     </b-container>
 </template>
 
