@@ -1,5 +1,5 @@
 <template>
-  <div class="redirectContent">
+  <div class="centerForm redirectContent">
     redirecting ...
   </div>
 </template>
@@ -24,14 +24,14 @@
       },
       async get_long_url() {
         try {
-          let response = await this.$axios.$get(`/${this.$router.path}`)
+          let response = await this.$axios.$get(`/api/shortener/redirect/${this.$route.params.id}`)
           return response.long_url
         } catch (error) {
           console.log(error);
         }
       },
       redirect(long_url) {
-
+        window.location.href = long_url
       },
     },
   }
