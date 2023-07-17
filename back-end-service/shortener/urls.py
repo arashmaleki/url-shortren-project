@@ -4,5 +4,5 @@ from shortener.views import ShortenerCreateApiView, ShortenerDetailAPIView, Shor
 urlpatterns = [
     path('', ShortenerCreateApiView.as_view(), name='shortener-list'),
     path('<int:pk>', ShortenerDetailAPIView.as_view(), name='shortener-detail'),
-    path('redirect/<str:short_url>', ShortenerRedirectAPIView.as_view()),
+    path('redirect/<str:short_url>', ShortenerRedirectAPIView.as_view(), name='redirect-shortener-url'),
 ]
