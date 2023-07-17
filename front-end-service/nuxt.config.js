@@ -112,8 +112,8 @@ export default {
   },
 
   server: {
-    port: 8000,
-    host: '0.0.0.0',
+    port: process.env.NUXT_SERVER_PORT_NUMBER,
+    host: process.env.NUXT_SERVER_HOST_ADDRESS,
     timing: false
   }
 }
