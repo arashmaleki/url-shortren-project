@@ -17,9 +17,7 @@
           let long_url = await this.get_long_url()
           this.redirect(long_url)
         } else {
-          this.$router.push({
-            path: '/home'
-          })
+          this.push_to_page('/home')
         }
       },
       async get_long_url() {
@@ -27,12 +25,19 @@
           let response = await this.$axios.$get(`/api/shortener/redirect/${this.$route.params.id}`)
           return response.long_url
         } catch (error) {
-          console.log(error);
+          this.push_to_page('/home')
         }
       },
       redirect(long_url) {
-        window.location.href = long_url
+        if (long_url) {
+          window.location.href = long_url
+        }
       },
+      push_to_page(route) {
+        this.$router.push({
+          path: route
+        })
+      }
     },
   }
 </script>
