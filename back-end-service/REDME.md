@@ -74,13 +74,20 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. Create a superuser account:
+4. Apply the migrations:
+
+````bash
+python manage.py makemigrations
+python manage.py migrate
+````
+
+5. Create a superuser account:
 
 ````bash
 python manage.py create_superuser
 ````
 
-5. Run the development server:
+6. Run the development server:
 
 ````bash
 python manage.py runserver
