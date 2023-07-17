@@ -1,0 +1,33 @@
+version: "2.4"
+
+services:
+    web:
+        image: docker/compose
+
+    urlshortenerdb:
+        image: bitnami/postgresql:13
+        volumes:
+            - urlshortenerdb:/var/lib/postgresql/data
+        container_name: urlshortenerdb
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+
+    backendserver:
+        build: .
+        command: ./docker-init.sh
+        restart: unless-stopped
+        volumes:
+            - .:/src
+        ports:
+            - 5000:5000
+        env_file: .env
+        depends_on:
+            - urlshortenerdb
+
+volumes:
+    urlshortenerdb:
+        external: false
