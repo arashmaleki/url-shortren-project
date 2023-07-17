@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from django.core.management.commands.runserver import Command as runserver
 
 load_dotenv()
 
@@ -118,6 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = os.getenv("STATIC_URL")
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -153,4 +155,15 @@ SWAGGER_SETTINGS = {
             'name': 'Token Authorization'
         }
     },
+}
+
+runserver.default_port = os.getenv("SERVER_PORT")
+runserver.default_addr = os.getenv("SERVER_HOST")
+
+ADMIN_CREDENTIALS =  {
+    'first_name': os.getenv("ADMIN_FIRST_NAME"),
+    'last_name': os.getenv("ADMIN_LAST_NAME"),
+    'email': os.getenv("ADMIN_EMAIL"),
+    'username': os.getenv("ADMIN_USERNAME"),
+    'password': os.getenv("ADMIN_PASSWORD")
 }
