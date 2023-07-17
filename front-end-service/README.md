@@ -1,69 +1,95 @@
-# front-end-service
+# URL Shortener front-end
 
-## Build Setup
+URL Shortener front-end is a Nuxt.js front-end that allows users to login, register, view and make their shortener urls.
+## Getting Started
+
+### Prerequisites
+
+Before running the project, you'll need to have the following installed on your machine:
+
+- Nuxt.js
+
+### Environment Variables
+
+This project uses environment variables to store sensitive information such as database credentials. To run the project, you'll need to create a `.env` file in the root directory of your project and add the required variables just like `.env.sample` file.
+
+1. Create a `.env` file in the root directory of your project:
 
 ```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
+touch .env
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+2. Open the `.env.sample` file and copy its contents, paste the contents of the `.env.sample` file into the `.env` file.
 
-## Special Directories
+3. Replace the default values of the variables with your own values.
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+```
+API_SERVER_BASE_URL="<BACK_END_SERVER_URL>"
+```
 
-### `assets`
+Save the `.env` file.
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+### Running Locally
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+To run the project locally, follow these steps:
 
-### `components`
+1. Ensure that PostgreSQL is installed and running locally.
+2. Clone the repository to your local machine:
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+```bash
+git clone https://github.com/arashmaleki77/url-shortener-project.git
+cd url-shortener-project/front-end-service/
+```
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+3. Install the project's dependencies:
 
-### `layouts`
+```bash
+npm install
+```
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+4. Run:
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+````bash
+npm run dev
+````
+
+Once the front-end is running, you can access the client at http://localhost:8000/.
+
+## build for production and launch server
+
+```bash
+$ npm run build
+$ npm run start
+$ npm run generate
+
+OR Running with pm2:
+$ npm run build
+$ pm2 start
+
+To restart pm2:
+$ pm2 restart Shortener
+```
+
+### Running with Docker
+
+To run the project using Docker, follow these steps:
+
+1. Clone the repository to your local machine:
+
+```bash
+git clone https://github.com/arashmaleki77/url-shortener-project.git
+cd url-shortener-project/front-end-service/
+```
+
+2. Build and start the Docker containers:
+
+````bash
+docker-compose up --build -d
+````
+
+Once the containers are running, you can access the API at http://localhost:8000/.
 
 
-### `pages`
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
 
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
