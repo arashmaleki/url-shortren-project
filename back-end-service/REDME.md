@@ -39,6 +39,12 @@ ADMIN_FIRST_NAME=<your_admin_first_name>
 ADMIN_LAST_NAME=<your_admin_last_name>
 ADMIN_EMAIL=<your_admin_email>
 ADMIN_PASSWORD=<your_admin_password>
+
+DEBUG=False
+SECRET_KEY='<SECRET_KEY>'
+STATIC_URL='static/'
+SERVER_PORT=5000
+SERVER_HOST='127.0.0.1'
 ```
 
 Save the `.env` file.
@@ -51,8 +57,8 @@ To run the project locally, follow these steps:
 2. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/fatemeh-mgsdi/crypto-buyer-api.git
-cd back-end-service/
+git clone https://github.com/arashmaleki77/url-shortener-project.git
+cd url-shortener-project/back-end-service/
 ```
 
 3. Install the project's dependencies:
@@ -75,7 +81,7 @@ python manage.py create_superuser
 python manage.py runserver
 ````
 
-Once the server is running, you can access the API at http://localhost:8000/.
+Once the server is running, you can access the API at http://localhost:5000/.
 
 ### Running with Docker
 
@@ -84,15 +90,15 @@ To run the project using Docker, follow these steps:
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/fatemeh-mgsdi/crypto-buyer-api.git
-cd crypto-buyer-api/
+git clone https://github.com/arashmaleki77/url-shortener-project.git
+cd url-shortener-project/back-end-service/
 ```
 
 2. Build and start the Docker containers:
 
 ````bash
 docker-compose build
-docker-compose --env-file=.env up
+docker-compose --env-file=.env up -d
 ````
 
 Once the containers are running, you can access the API at http://localhost:5000/.
