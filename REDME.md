@@ -32,7 +32,7 @@ Swagger URL: <BACK_END_SERVICE_URL>/doc
 
 ### Database schemas
 
-1. UML file is in /back-end-service/docs/uml.png
+1. UML file is in `/back-end-service/docs/uml.png`
 
 
 ### Getting Started
@@ -41,7 +41,7 @@ Swagger URL: <BACK_END_SERVICE_URL>/doc
 cd back-end-service/
 ```
 
-Open README.md file and follow the instruction.
+Open `README.md` file and follow the instruction.
 
 
 ## Front-End-Service
@@ -71,4 +71,4 @@ Open README.md file and follow the instruction.
 cd front-end-service/
 ```
 
-Open README.md file and follow the instruction.
+Open `README.md` file and follow the instruction.
