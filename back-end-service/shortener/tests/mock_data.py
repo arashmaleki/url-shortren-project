@@ -1,9 +1,9 @@
 shortener_data = {
-    "long_url": "Bitcoin",
+    "long_url": "https://aws.amazon.com/premiumsupport/?nc2=h_ql_ce_spt-a",
 }
 
 shortener2_data = {
-    "long_url": "Bitcoin",
+    "long_url": "https://aws.amazon.com/premiumsupport/?nc2=h_ql_ce_spt-a",
 }
 
 create_shortener_data = {

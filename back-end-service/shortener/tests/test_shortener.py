@@ -4,7 +4,6 @@ from rest_framework.test import APITestCase, APIClient
 from rest_framework.authtoken.models import Token
 from shortener.models import Shortener
 from shortener.serializers import ShortenerSerializer
-from url_shortener import settings
 from users.models import User
 from shortener.tests.mock_data import *
 
@@ -43,7 +42,7 @@ class ShortenerViewSetTestCase(APITestCase):
 
     def test_update_shortener(self):
         url = reverse("shortener-detail", args=[self.shortener.id])
-        response = self.client.put(url, update_shortener_data)
+        response = self.client.patch(url, update_shortener_data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             Shortener.objects.get(id=self.shortener.id).long_url,
@@ -57,8 +56,7 @@ class ShortenerViewSetTestCase(APITestCase):
         self.assertEqual(Shortener.objects.count(), 1)
 
     def test_redirect(self):
-        short_url = self.shortener.short_url.replace(settings.BASE_URL, '')
-        url = reverse("redirect-shortener-url", args=[short_url])
+        url = reverse("redirect-shortener-url", args=[self.shortener2.short_url])
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['long_url'], self.shortener.long_url)
+        self.assertEqual(response.data['long_url'], self.shortener2.long_url)
