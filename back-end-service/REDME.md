@@ -4,6 +4,11 @@ URL Shortener server is a Django-based REST API that allows users to create, vie
 
 ## Getting Started
 
+### Docs
+
+1. UML file is in `/back-end-service/docs/uml.png`
+2. Swagger URL after running back-end-service: `<BACK_END_SERVICE_URL>/doc`
+
 ### Prerequisites
 
 Before running the project, you'll need to have the following installed on your machine:
