@@ -25,6 +25,8 @@ touch .env
 
 ```
 API_SERVER_BASE_URL="<BACK_END_SERVER_URL>"
+NUXT_SERVER_PORT_NUMBER=8000
+NUXT_SERVER_HOST_ADDRESS="0.0.0.0"
 ```
 
 Save the `.env` file.
