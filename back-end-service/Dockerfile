@@ -11,10 +11,10 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 ENV PYTHONUNBUFFERED 1
 
+WORKDIR /src
+
 # set work directory
 COPY . /src/
-
-WORKDIR /src
 
 RUN pip install --upgrade pip
 RUN pip install -r /src/requirements.txt
