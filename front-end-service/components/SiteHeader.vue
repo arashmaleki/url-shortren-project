@@ -10,16 +10,14 @@
           <template #button-content>
             <span>{{ $store.state.user.authenticated_user.username }}</span>
           </template>
-          <b-dropdown-item>
-            <b-nav-item to="/profile">
-              Profile
-            </b-nav-item>
-          </b-dropdown-item>
-          <b-dropdown-item @click="logout">
-            <b-nav-item>
+            <b-link to="/profile">
+              <div class="p-2 nav-item w-100 BlackText">
+                Profile
+              </div>
+            </b-link>
+            <div class="p-2 nav-item" @click="logout">
               Logout
-            </b-nav-item>
-          </b-dropdown-item>
+            </div>
         </b-nav-item-dropdown>
         <div v-else>
           <b-nav-item to="/login">
