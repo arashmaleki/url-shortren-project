@@ -25,7 +25,8 @@
           <b-button variant="danger" @click="delete_url(row.item.id, row.index)">Delete</b-button>
         </template>
       </b-table>
-      <b-pagination-nav :link-gen="link_gen" :number-of-pages="total_pages" use-router align="center" />
+      <b-pagination-nav :link-gen="link_gen" :number-of-pages="total_pages" use-router align="center">
+      </b-pagination-nav>
     </b-card>
   </div>
 </template>

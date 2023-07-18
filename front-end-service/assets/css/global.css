@@ -17,8 +17,8 @@ html {
 
 body {
   font-weight: 300;
-  color: var(--Black);
-  background: var(--White);
+  color: black;
+  background: white;
   min-height: 100vh;
   max-height: 100vh;
 }
@@ -46,4 +46,8 @@ body {
 
 .textAlignCenter {
     text-align: center;
+}
+
+.BlackText {
+  color: black;
 }
