@@ -30,8 +30,8 @@
     data() {
       return {
         user: {
-          username: 'arash1235',
-          password: 'Avrillavigne20'
+          username: '',
+          password: ''
         },
         is_loading: false,
         error: '',
